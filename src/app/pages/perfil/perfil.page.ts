@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonFooter, IonIcon, ToastController, LoadingController } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonFooter,
+  IonIcon,
+  ToastController,
+  LoadingController
+} from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore';
@@ -92,5 +98,10 @@ export class PerfilPage implements OnInit {
       color
     });
     toast.present();
+  }
+
+  // ✅ Nova função: garante navegação funcional da barra inferior
+  navegar(caminho: string) {
+    this.router.navigate([caminho]);
   }
 }

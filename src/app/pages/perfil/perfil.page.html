@@ -8,39 +8,39 @@
   </div>
 
   <!-- 📋 Informações pessoais -->
-<div class="info-card fade-in">
-  <h3>Informações Pessoais</h3>
+  <div class="info-card fade-in">
+    <h3>Informações Pessoais</h3>
 
-  <div *ngIf="!editando; else modoEdicao">
-    <div class="info-item">
-      <ion-icon name="person-outline"></ion-icon>
-      <span>{{ nomeUsuario || 'Usuário' }}</span>
-    </div>
-    <div class="info-item">
-      <ion-icon name="mail-outline"></ion-icon>
-      <span>{{ emailUsuario }}</span>
-    </div>
-    <div class="info-item">
-      <ion-icon name="call-outline"></ion-icon>
-      <span>{{ telefoneUsuario || '(00) 00000-0000' }}</span>
+    <div *ngIf="!editando; else modoEdicao">
+      <div class="info-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <span>{{ nomeUsuario || 'Usuário' }}</span>
+      </div>
+      <div class="info-item">
+        <ion-icon name="mail-outline"></ion-icon>
+        <span>{{ emailUsuario }}</span>
+      </div>
+      <div class="info-item">
+        <ion-icon name="call-outline"></ion-icon>
+        <span>{{ telefoneUsuario || '(00) 00000-0000' }}</span>
+      </div>
+
+      <button class="btn-editar" (click)="habilitarEdicao()">Editar Perfil</button>
     </div>
 
-    <button class="btn-editar" (click)="habilitarEdicao()">Editar Perfil</button>
+    <ng-template #modoEdicao>
+      <div class="info-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <input type="text" [(ngModel)]="nomeUsuario" placeholder="Nome completo" />
+      </div>
+      <div class="info-item">
+        <ion-icon name="call-outline"></ion-icon>
+        <input type="tel" [(ngModel)]="telefoneUsuario" placeholder="(00) 00000-0000" />
+      </div>
+
+      <button class="btn-editar" (click)="salvarAlteracoes()">Salvar</button>
+    </ng-template>
   </div>
-
-  <ng-template #modoEdicao>
-    <div class="info-item">
-      <ion-icon name="person-outline"></ion-icon>
-      <input type="text" [(ngModel)]="nomeUsuario" placeholder="Nome completo" />
-    </div>
-    <div class="info-item">
-      <ion-icon name="call-outline"></ion-icon>
-      <input type="tel" [(ngModel)]="telefoneUsuario" placeholder="(00) 00000-0000" />
-    </div>
-
-    <button class="btn-editar" (click)="salvarAlteracoes()">Salvar</button>
-  </ng-template>
-</div>
 
   <!-- 🧾 Histórico de pedidos -->
   <div class="info-card fade-in">
@@ -81,20 +81,20 @@
 
 </ion-content>
 
-<!-- 🔽 Barra inferior -->
+<!-- 🔽 Barra inferior com navegação funcional -->
 <ion-footer class="footer-nav">
   <div class="nav-buttons">
-    <button class="nav-btn" routerLink="/menu">
+    <button class="nav-btn" (click)="navegar('/menu')">
       <ion-icon name="restaurant-outline"></ion-icon>
       <span>Menu</span>
     </button>
 
-    <button class="nav-btn" routerLink="/carrinho">
+    <button class="nav-btn" (click)="navegar('/carrinho')">
       <ion-icon name="cart-outline"></ion-icon>
       <span>Carrinho</span>
     </button>
 
-    <button class="nav-btn active" routerLink="/perfil">
+    <button class="nav-btn active" (click)="navegar('/perfil')">
       <ion-icon name="person-outline"></ion-icon>
       <span>Perfil</span>
     </button>
