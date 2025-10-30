@@ -1,0 +1,181 @@
+/* ===== Fundo geral ===== */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f8f2;
+  font-family: 'Roboto', sans-serif;
+  animation: fadeInBackground 1.2s ease-in-out;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ===== Cartão central ===== */
+.login-card {
+  background: #cfe8cf;
+  border-radius: 18px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  padding: 45px 55px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  animation: slideUp 0.8s ease-out;
+  box-sizing: border-box;
+}
+
+/* ===== Logo e título ===== */
+.logo {
+  font-size: 48px;
+  font-weight: 700;
+  color: #355d3b;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #355d3b;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* ===== Inputs ===== */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #f9fdf9;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1px solid #b5d2b5;
+  transition: 0.3s ease;
+}
+
+.input-group:focus-within {
+  border-color: #3f6f45;
+  box-shadow: 0 0 6px #3f6f4533;
+}
+
+.input-group ion-icon {
+  font-size: 20px;
+  color: #3f6f45;
+  margin-right: 10px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 14px;
+  color: #2e4d31;
+  padding-right: 0;
+}
+
+/* ===== Ícone do olho - CORREÇÃO ===== */
+.eye-icon {
+  margin-left: 8px;
+  font-size: 20px;
+  color: #3f6f45;
+  cursor: pointer;
+}
+
+/* 🔥 Remove o olho preto nativo do Edge e Chrome */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input::-webkit-password-toggle {
+  display: none;
+}
+
+/* ===== Botões ===== */
+.btn-primary,
+.btn-secondary {
+  width: 100%;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  font-size: 15px;
+}
+
+/* Botão principal */
+.btn-primary {
+  background: #3f6f45;
+  color: white;
+  border: none;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.btn-primary:hover {
+  background: #355d3b;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+/* Botão secundário */
+.btn-secondary {
+  background: transparent;
+  border: 2px solid #3f6f45;
+  color: #3f6f45;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.btn-secondary:hover {
+  background: #3f6f45;
+  color: white;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+/* ===== Links ===== */
+.forgot-password {
+  text-align: center; /* ✅ Centralizado */
+  margin: 12px 0 18px 0;
+  font-size: 13px;
+  color: #355d3b;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* ===== Animações ===== */
+@keyframes fadeInBackground {
+  from { background-color: #e2f0e0; }
+  to { background-color: #f3f8f2; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 480px) {
+  .login-container { padding: 15px; }
+
+  .login-card {
+    padding: 28px 24px;
+    max-width: 100%;
+  }
+
+  .logo { font-size: 36px; }
+
+  .subtitle {
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

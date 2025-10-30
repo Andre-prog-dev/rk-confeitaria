@@ -1,0 +1,105 @@
+<ion-content class="background">
+
+  <!-- 🛍️ Cabeçalho -->
+  <div class="cart-header">
+    <h2><ion-icon name="cart-outline"></ion-icon> Meu Carrinho</h2>
+  </div>
+
+  <!-- 📦 Lista de produtos -->
+  <div class="cart-container fade-in" *ngIf="carrinho.length > 0; else vazio">
+    <div class="cart-item" *ngFor="let item of carrinho; let i = index">
+      <img [src]="item.imagem" alt="{{ item.nome }}" class="cart-image" />
+      <div class="cart-info">
+        <h3>{{ item.nome }}</h3>
+        <p>R$ {{ item.preco | number: '1.2-2' }}</p>
+      </div>
+      <ion-icon
+        name="trash-outline"
+        class="remove-btn"
+        (click)="removerItem(i)"
+      ></ion-icon>
+    </div>
+
+    <div class="total">
+      <p><strong>Total:</strong> R$ {{ total | number: '1.2-2' }}</p>
+    </div>
+
+    <!-- 💳 Formas de pagamento -->
+    <div class="payment-options">
+      <h4>Forma de pagamento</h4>
+      <ion-radio-group [(ngModel)]="formaPagamento">
+        <ion-item lines="none">
+          <ion-radio slot="start" value="pix"></ion-radio>
+          <ion-label>Pix</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-radio slot="start" value="cartao"></ion-radio>
+          <ion-label>Cartão de Crédito / Débito</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-radio slot="start" value="entrega"></ion-radio>
+          <ion-label>Pagar na Entrega</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </div>
+
+    <button class="finalizar-btn" (click)="finalizarCompra()">
+      Finalizar Compra
+    </button>
+  </div>
+
+  <!-- 🧁 Carrinho vazio -->
+  <ng-template #vazio>
+    <div class="empty-cart fade-in">
+      <ion-icon name="cart-outline"></ion-icon>
+      <p>Seu carrinho está vazio 😢</p>
+      <button class="btn-voltar" (click)="navegar('/menu')">
+        Voltar ao Menu
+      </button>
+    </div>
+  </ng-template>
+
+  <!-- 🧾 Modal de confirmação -->
+  <div class="modal-overlay" *ngIf="mostrarResumo">
+    <div class="modal-content fade-in">
+      <ion-icon name="checkmark-circle-outline" class="icon-sucesso"></ion-icon>
+      <h3>Compra Finalizada 🎉</h3>
+      <p>Pedido nº <strong>{{ numeroPedido }}</strong></p>
+      <p>Forma de pagamento: <strong>{{ formaPagamento | uppercase }}</strong></p>
+      <p class="agradecimento">Obrigada por escolher a RK Confeitaria 💚</p>
+      <button class="btn-voltar-menu" (click)="voltarMenu()">Voltar ao Menu</button>
+    </div>
+  </div>
+</ion-content>
+
+<!-- ✅ Barra inferior -->
+<ion-footer class="footer-nav">
+  <div class="nav-buttons">
+    <button
+      class="nav-btn"
+      [class.active]="rotaAtiva === '/menu'"
+      (click)="navegar('/menu')"
+    >
+      <ion-icon name="restaurant-outline"></ion-icon>
+      <span>Menu</span>
+    </button>
+
+    <button
+      class="nav-btn"
+      [class.active]="rotaAtiva === '/carrinho'"
+      (click)="navegar('/carrinho')"
+    >
+      <ion-icon name="cart-outline"></ion-icon>
+      <span>Carrinho</span>
+    </button>
+
+    <button
+      class="nav-btn"
+      [class.active]="rotaAtiva === '/perfil'"
+      (click)="navegar('/perfil')"
+    >
+      <ion-icon name="person-outline"></ion-icon>
+      <span>Perfil</span>
+    </button>
+  </div>
+</ion-footer>

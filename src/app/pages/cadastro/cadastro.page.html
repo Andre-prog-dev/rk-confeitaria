@@ -1,0 +1,94 @@
+<ion-content class="background fade-in">
+
+  <div class="content-wrapper">
+    <div class="container">
+
+      <h1 class="logo">RK</h1>
+      <p class="subtitle">CONFEITARIA</p>
+
+      <form (ngSubmit)="cadastrar()">
+
+        <!-- ✅ Nome -->
+        <div class="input-group" [ngClass]="{'valid': campoValido(nome)}">
+          <ion-icon name="person-outline"></ion-icon>
+          <input type="text"
+                 placeholder="Nome completo"
+                 [(ngModel)]="nome"
+                 name="nome"
+                 required>
+        </div>
+
+        <!-- ✅ Email -->
+        <div class="input-group" [ngClass]="{'valid': campoValido(email)}">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email"
+                 placeholder="E-mail"
+                 [(ngModel)]="email"
+                 name="email"
+                 autocomplete="email"
+                 required>
+        </div>
+
+        <!-- ✅ Telefone com máscara -->
+        <div class="input-group" [ngClass]="{'valid': campoValido(telefone)}">
+          <ion-icon name="call-outline"></ion-icon>
+          <input type="tel"
+       placeholder="Telefone"
+       [(ngModel)]="telefone"
+       (ngModelChange)="formatTelefone($event)"
+       inputmode="numeric"
+       maxlength="15"
+       name="telefone"
+       required>
+
+
+        </div>
+
+        <!-- ✅ Senha -->
+        <div class="input-group" [ngClass]="{'valid': campoValido(senha)}">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input 
+            [type]="mostrarSenha ? 'text' : 'password'"
+            placeholder="Senha"
+            [(ngModel)]="senha"
+            name="senha"
+            required>
+          <ion-icon class="eye-icon"
+                    [name]="mostrarSenha ? 'eye-off-outline' : 'eye-outline'"
+                    (click)="mostrarSenha = !mostrarSenha">
+          </ion-icon>
+        </div>
+
+        <!-- ✅ Confirmar senha -->
+        <div class="input-group" [ngClass]="{'valid': campoValido(confirmarSenha)}">
+          <ion-icon name="checkmark-done-outline"></ion-icon>
+          <input 
+            [type]="mostrarConfirmar ? 'text' : 'password'"
+            placeholder="Confirmar senha"
+            [(ngModel)]="confirmarSenha"
+            name="confirmarSenha"
+            required>
+          <ion-icon class="eye-icon"
+                    [name]="mostrarConfirmar ? 'eye-off-outline' : 'eye-outline'"
+                    (click)="mostrarConfirmar = !mostrarConfirmar">
+          </ion-icon>
+        </div>
+
+        <!-- ✅ Botão -->
+        <button class="btn-primary" type="submit" [disabled]="carregando">
+  <ion-spinner *ngIf="carregando" name="crescent"></ion-spinner>
+  <span *ngIf="!carregando">CADASTRAR</span>
+</button>
+
+
+      </form>
+
+      <!-- ✅ Voltar ao login -->
+      <p class="link-login" (click)="goToLogin()">
+        Já tenho uma conta
+      </p>
+
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-content class="background fade-in">
+
+  <div class="login-container">
+
+    <div class="login-card">
+      <h1 class="logo">RK</h1>
+      <p class="subtitle">CONFEITARIA</p>
+
+      <form (ngSubmit)="login()">
+
+        <!-- Campo Email -->
+        <div class="input-group">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email"
+                 placeholder="E-mail"
+                 [(ngModel)]="email"
+                 name="email"
+                 autocomplete="email"
+                 required />
+        </div>
+
+        <!-- Campo Senha com botão de visualização -->
+        <div class="input-group">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+
+          <input 
+            [type]="mostrarSenha ? 'text' : 'password'" 
+            placeholder="Senha"
+            [(ngModel)]="senha" 
+            name="senha"
+            required />
+
+          <ion-icon 
+            class="eye-icon"
+            [name]="mostrarSenha ? 'eye-off-outline' : 'eye-outline'"
+            (click)="mostrarSenha = !mostrarSenha">
+          </ion-icon>
+        </div>
+
+        <!-- Botão Entrar -->
+        <button class="btn-primary" type="submit">
+          ENTRAR
+        </button>
+
+        <!-- Esqueci minha senha -->
+        <button type="button"
+                class="forgot-password"
+                routerLink="/esquecisenha">
+          Esqueci minha senha
+        </button>
+
+      </form>
+
+      <!-- Criar conta -->
+      <button type="button"
+              class="btn-secondary"
+              routerLink="/cadastro">
+        CRIAR CONTA
+      </button>
+
+    </div>
+  </div>
+
+</ion-content>

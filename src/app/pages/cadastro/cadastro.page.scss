@@ -1,0 +1,115 @@
+/* ===== Fundo ===== */
+.background {
+  --background: #f3f8f2;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container {
+  width: 90%;
+  max-width: 380px;
+  background: #cfe8cf;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(63, 111, 69, 0.12);
+  animation: slideFadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* ===== Títulos ===== */
+.logo {
+  font-size: 2.8rem;
+  color: #355d3b;
+  font-weight: 800;
+}
+
+.subtitle {
+  color: #355d3b;
+  letter-spacing: 2px;
+  margin-bottom: 1.4rem;
+}
+
+/* ===== Inputs ===== */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #f9fdf9;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #b5d2b5;
+}
+
+.input-group ion-icon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #355d3b;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+}
+
+/* Olho visualizar senha */
+.eye-icon {
+  font-size: 20px;
+  color: #4b7054;
+  cursor: pointer;
+}
+
+/* ===== Botão Cadastrar ===== */
+.btn-primary {
+  width: 100%;
+  background: #3f6f45;
+  color: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background: #355d3b;
+}
+
+/* ===== Link Login ===== */
+.link-login {
+  margin-top: 16px;
+  color: #355d3b;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ===== Animação ===== */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Validação de campo ✅ */
+.input-group.valid {
+  border-color: #3f6f45;
+  box-shadow: 0 0 6px #3f6f4565;
+}
+
+/* Efeito no olho ao clicar 👁️ */
+.eye-icon:active {
+  transform: scale(1.1);
+  opacity: 0.7;
+}
